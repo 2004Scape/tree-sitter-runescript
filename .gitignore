@@ -41,3 +41,6 @@ dist/
 
 # Manual test files
 *.test.rs2
+
+# Mac
+.DS_Store
