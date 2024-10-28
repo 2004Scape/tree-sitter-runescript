@@ -2,7 +2,7 @@
   "name": "tree-sitter-runescript",
   "version": "0.1.0",
   "description": "Runescript grammar for tree-sitter",
-  "repository": "github:tree-sitter/tree-sitter-runescript",
+  "repository": "github:2004Scape/tree-sitter-runescript",
   "license": "MIT",
   "author": {
     "name": "David Lysenko",
