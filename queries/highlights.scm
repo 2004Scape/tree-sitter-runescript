@@ -9,7 +9,6 @@
   (declaration_variable)
 ] @variable
 
-
 ; Scripts
 
 (script
