@@ -4,14 +4,16 @@
 
 ![Highlight](https://github.com/2004Scape/tree-sitter-runescript/blob/main/assets/highlight.png)
 
-<h2>Usage</h2>
+<div align="center">
+    <h2>Usage</h2>
+</div>
 
 In NeoVim, you could add the following lines into your `nvim-treesitter` config:
 
 ```lua
 local parse_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-for _, v in pairs({ { "runescript", "rs2", { "clientscript", "cs2" } } }) do
+for _, v in pairs({ { "runescript", "rs2" }, { "clientscript", "cs2" } }) do
     parse_config[v[1]] = {
         install_info = {
             url = "https://github.com/2004Scape/tree-sitter-runescript",
