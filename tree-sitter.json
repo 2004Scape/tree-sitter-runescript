@@ -1,0 +1,35 @@
+{
+  "grammars": [
+    {
+      "name": "runescript",
+      "camelcase": "RuneScript",
+      "scope": "source.rs2",
+      "path": ".",
+      "file-types": ["rs2", "cs2"],
+      "highlights": ["queries/highlights.scm"],
+      "injection-regex": "^(rs2|cs2|runescript|clientscript)$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "RuneScript grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "David Lysenko",
+        "email": "lysenkodavid@gmail.coms"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/InfiniteRain/tree-sitter-runescript"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
