@@ -46,7 +46,7 @@ const CALC = "calc";
 const RETURN = "return";
 const CASE = "case";
 
-const IDENTIFIER = /[a-zA-Z0-9_+.:]+/; // can an identifier start with a number?
+const IDENTIFIER = /[a-zA-Z0-9_+.:]+/;
 const HEX_LITERAL = /0[xX][0-9a-fA-F]+/;
 const BOOLEAN_LITERAL = /true|false/;
 const COORD_LITERAL = /\d+_\d+_\d+_\d+_\d+/;
@@ -70,10 +70,6 @@ const PREC = {
   TYPE_LIST: 10,
 };
 
-const LEX_PREC = {
-  IDENTIFIER: -1,
-};
-
 const TAGS = ["br", "col", "str", "shad", "u", "img", "gt", "lt"];
 
 module.exports = grammar({
@@ -82,6 +78,8 @@ module.exports = grammar({
   externals: ($) => [$._string_chars],
 
   extras: ($) => [$.comment, /[\s\t\r\n]/],
+
+  word: ($) => $.identifier,
 
   rules: {
     source_file: ($) => repeat($.script),
@@ -355,27 +353,21 @@ module.exports = grammar({
     // I think IDENTIFIER will override others here
     identifier: () =>
       token(
-        prec(
-          LEX_PREC.IDENTIFIER,
-          choice(
-            IDENTIFIER,
-            HEX_LITERAL,
-            BOOLEAN_LITERAL,
-            NULL_LITERAL,
-            COORD_LITERAL,
-            MAPZONE_LITERAL,
-            TYPE_ARRAY,
-            SWITCH_TYPE,
-            DEF_TYPE,
-            DEFAULT,
-          ),
+        choice(
+          IDENTIFIER,
+          HEX_LITERAL,
+          BOOLEAN_LITERAL,
+          NULL_LITERAL,
+          COORD_LITERAL,
+          MAPZONE_LITERAL,
+          TYPE_ARRAY,
+          SWITCH_TYPE,
+          DEF_TYPE,
+          DEFAULT,
         ),
       ),
 
     _advanced_identifier: ($) =>
-      choice(
-        $.identifier,
-        token(prec(LEX_PREC.IDENTIFIER, choice(IF, ELSE, WHILE, RETURN, CALC))),
-      ),
+      choice($.identifier, token(choice(IF, ELSE, WHILE, RETURN, CALC))),
   },
 });
