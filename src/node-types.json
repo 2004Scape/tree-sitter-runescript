@@ -699,7 +699,7 @@
     "type": "script",
     "named": true,
     "fields": {
-      "name": {
+      "subject": {
         "multiple": false,
         "required": true,
         "types": [
@@ -778,7 +778,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,

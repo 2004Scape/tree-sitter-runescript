@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "runescript",
   "word": "identifier",
   "rules": {
@@ -69,7 +68,7 @@
         },
         {
           "type": "FIELD",
-          "name": "name",
+          "name": "subject",
           "content": {
             "type": "SYMBOL",
             "name": "identifier"

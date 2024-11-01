@@ -98,7 +98,7 @@ module.exports = grammar({
         LEFT_BRACKET,
         field("trigger", $.identifier),
         COMMA,
-        field("name", $.identifier),
+        field("subject", $.identifier),
         RIGHT_BRACKET,
         optional(
           seq(
