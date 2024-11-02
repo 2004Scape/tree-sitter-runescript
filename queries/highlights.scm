@@ -32,8 +32,10 @@
     "false"
     "null"))
 
-((literal) @number
-  (#match? @number "^(-?[0-9]+|[0-9]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+)$"))
+[
+  (integer_literal)
+  (coord_literal)
+] @number
 
 (comment) @comment
 
