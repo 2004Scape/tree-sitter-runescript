@@ -52,7 +52,7 @@
   ";"
   ":"
   ","
-] @punctuation.delimeter
+] @punctuation.delimiter
 
 [
   "("
@@ -77,7 +77,7 @@
 ] @operator
 
 (arithmetic
-  "%" @module.operator)
+  "%" @operator)
 
 [
   "default"
