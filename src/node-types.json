@@ -544,6 +544,14 @@
       "required": false,
       "types": [
         {
+          "type": "coord_literal",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
           "type": "string_literal",
           "named": true
         }
@@ -778,6 +786,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1126,6 +1135,10 @@
     "named": true
   },
   {
+    "type": "coord_literal",
+    "named": true
+  },
+  {
     "type": "def_type_keyword",
     "named": true
   },
@@ -1148,6 +1161,10 @@
   {
     "type": "if",
     "named": false
+  },
+  {
+    "type": "integer_literal",
+    "named": true
   },
   {
     "type": "null",

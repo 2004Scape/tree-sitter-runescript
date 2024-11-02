@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "runescript",
   "word": "identifier",
   "rules": {
@@ -1304,16 +1305,16 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "PATTERN",
-            "value": "-?\\d+"
+            "type": "SYMBOL",
+            "name": "integer_literal"
           },
           {
             "type": "PATTERN",
             "value": "0[xX][0-9a-fA-F]+"
           },
           {
-            "type": "PATTERN",
-            "value": "\\d+_\\d+_\\d+_\\d+_\\d+"
+            "type": "SYMBOL",
+            "name": "coord_literal"
           },
           {
             "type": "PATTERN",
@@ -1333,6 +1334,14 @@
           }
         ]
       }
+    },
+    "integer_literal": {
+      "type": "PATTERN",
+      "value": "-?\\d+"
+    },
+    "coord_literal": {
+      "type": "PATTERN",
+      "value": "\\d+_\\d+_\\d+_\\d+_\\d+"
     },
     "string_literal": {
       "type": "SEQ",

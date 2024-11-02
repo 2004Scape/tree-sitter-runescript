@@ -310,15 +310,19 @@ module.exports = grammar({
       prec(
         PREC.LITERAL,
         choice(
-          INTEGER_LITERAL,
+          $.integer_literal,
           HEX_LITERAL,
-          COORD_LITERAL,
+          $.coord_literal,
           BOOLEAN_LITERAL,
           CHAR_LITERAL,
           NULL_LITERAL,
           $.string_literal,
         ),
       ),
+
+    integer_literal: () => INTEGER_LITERAL,
+
+    coord_literal: () => COORD_LITERAL,
 
     string_literal: ($) =>
       seq(

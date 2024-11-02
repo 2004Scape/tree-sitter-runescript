@@ -13,7 +13,7 @@
 
 (script
   trigger: (identifier) @keyword.directive
-  name: (identifier) @function)
+  subject: (identifier) @function)
 
 ; Calls
 
@@ -27,13 +27,13 @@
 ; Literals
 
 ((literal) @constant.builtin
-  (#match? @constant.builtin "^(true|false|null)$"))
+  (#any-of? @constant.builtin
+    "true"
+    "false"
+    "null"))
 
 ((literal) @number
   (#match? @number "^(-?[0-9]+|[0-9]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+)$"))
-
-((literal) @number
-  (#match?))
 
 (comment) @comment
 
