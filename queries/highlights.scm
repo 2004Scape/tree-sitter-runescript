@@ -1,5 +1,4 @@
 ; Variables
-
 [
   (identifier)
   (local_variable)
@@ -10,27 +9,21 @@
 ] @variable
 
 ; Scripts
-
 (script
   trigger: (identifier) @keyword.directive
   subject: (identifier) @function)
 
 ; Calls
-
 (call
   [
-   "~"
-   "@"
+    "~"
+    "@"
   ]? @function
   callee: (identifier) @function)
 
 ; Literals
-
 ((literal) @constant.builtin
-  (#any-of? @constant.builtin
-    "true"
-    "false"
-    "null"))
+  (#any-of? @constant.builtin "true" "false" "null"))
 
 [
   (integer_literal)
@@ -50,13 +43,11 @@
 (string_tag) @punctuation.special
 
 ; Types
-
 (type) @type
 
 (parameter_type) @type
 
 ; Tokens
-
 [
   ";"
   ":"
@@ -89,14 +80,13 @@
   "%" @module.operator)
 
 [
- "default"
- "if"
- "else"
- "while"
- "calc"
- "return"
- "case"
- (def_type_keyword)
- (switch_type_keyword)
+  "default"
+  "if"
+  "else"
+  "while"
+  "calc"
+  "return"
+  "case"
+  (def_type_keyword)
+  (switch_type_keyword)
 ] @keyword
-
