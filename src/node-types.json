@@ -284,16 +284,17 @@
   {
     "type": "constant_variable",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -314,10 +315,6 @@
         },
         {
           "type": "constant_variable",
-          "named": true
-        },
-        {
-          "type": "declaration_variable",
           "named": true
         },
         {
@@ -468,16 +465,17 @@
   {
     "type": "game_variable",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -561,15 +559,22 @@
   {
     "type": "local_array_variable",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
         {
           "type": "parenthesis",
           "named": true
@@ -580,16 +585,17 @@
   {
     "type": "local_variable",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -601,11 +607,11 @@
       "required": true,
       "types": [
         {
-          "type": "parameter_type",
+          "type": "local_variable",
           "named": true
         },
         {
-          "type": "parameter_variable",
+          "type": "parameter_type",
           "named": true
         }
       ]
@@ -621,21 +627,6 @@
       "types": [
         {
           "type": "parameter",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "parameter_variable",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
           "named": true
         }
       ]

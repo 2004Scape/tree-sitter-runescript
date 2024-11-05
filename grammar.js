@@ -116,7 +116,7 @@ module.exports = grammar({
     parameter: ($) =>
       seq(
         alias(choice(IDENTIFIER, TYPE_ARRAY), $.parameter_type),
-        alias(seq(DOLLAR, $._advanced_identifier), $.parameter_variable),
+        $.local_variable,
       ),
 
     type_list: ($) =>
@@ -188,7 +188,7 @@ module.exports = grammar({
     declaration_statement: ($) =>
       seq(
         $.def_type_keyword,
-        alias(seq(DOLLAR, $._advanced_identifier), $.declaration_variable),
+        $.local_variable,
         optional(seq(EQ, $._expression)),
         SEMICOLON,
       ),
@@ -293,18 +293,18 @@ module.exports = grammar({
     assignable_variable: ($) =>
       choice($.local_variable, $.local_array_variable, $.game_variable),
 
-    local_variable: ($) => seq(DOLLAR, $._advanced_identifier),
+    local_variable: ($) => seq(DOLLAR, field("name", $._advanced_identifier)),
 
     local_array_variable: ($) =>
-      seq(DOLLAR, $._advanced_identifier, $.parenthesis),
+      seq(DOLLAR, field("name", $._advanced_identifier), $.parenthesis),
 
     game_variable: ($) =>
       choice(
-        seq(MOD, $._advanced_identifier),
-        seq(DOTMOD, $._advanced_identifier),
+        seq(MOD, field("name", $._advanced_identifier)),
+        seq(DOTMOD, field("name", $._advanced_identifier)),
       ),
 
-    constant_variable: ($) => seq(CARET, $._advanced_identifier),
+    constant_variable: ($) => seq(CARET, field("name", $._advanced_identifier)),
 
     literal: ($) =>
       prec(
@@ -354,7 +354,6 @@ module.exports = grammar({
 
     string_interpolation: ($) => seq(LT, $._expression, GT),
 
-    // I think IDENTIFIER will override others here
     identifier: () =>
       token(
         choice(
@@ -372,6 +371,9 @@ module.exports = grammar({
       ),
 
     _advanced_identifier: ($) =>
-      choice($.identifier, token(choice(IF, ELSE, WHILE, RETURN, CALC))),
+      choice(
+        $.identifier,
+        alias(token(choice(IF, ELSE, WHILE, RETURN, CALC)), $.identifier),
+      ),
   },
 });

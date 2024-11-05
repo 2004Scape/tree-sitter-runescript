@@ -1,12 +1,21 @@
 ; Variables
-[
-  (identifier)
-  (local_variable)
-  (game_variable)
-  (constant_variable)
-  (parameter_variable)
-  (declaration_variable)
-] @variable
+(identifier) @variable
+
+(local_variable
+  "$" @attribute.builtin)
+
+(game_variable
+  [
+    "%"
+    ".%"
+  ] @attribute.builtin)
+
+(constant_variable
+  "^" @attribute.builtin)
+
+(parameter
+  (local_variable
+    name: (identifier) @variable.parameter))
 
 ; Scripts
 (script
@@ -18,8 +27,8 @@
   [
     "~"
     "@"
-  ]? @function
-  callee: (identifier) @function)
+  ]? @attribute.builtin
+  callee: (identifier) @function.call)
 
 ; Literals
 ((literal) @boolean
@@ -34,7 +43,12 @@
 
 (comment) @comment @spell
 
-(string_fragment) @string
+[
+  (string_fragment)
+  "\""
+] @string
+
+(escape_sequence) @string.escape
 
 (string_interpolation
   [
@@ -62,6 +76,11 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+[
+  "["
+  "]"
+] @punctuation.special
 
 [
   "*"

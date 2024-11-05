@@ -201,22 +201,8 @@
           "value": "parameter_type"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "$"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_advanced_identifier"
-              }
-            ]
-          },
-          "named": true,
-          "value": "parameter_variable"
+          "type": "SYMBOL",
+          "name": "local_variable"
         }
       ]
     },
@@ -516,22 +502,8 @@
           "name": "def_type_keyword"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "$"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_advanced_identifier"
-              }
-            ]
-          },
-          "named": true,
-          "value": "declaration_variable"
+          "type": "SYMBOL",
+          "name": "local_variable"
         },
         {
           "type": "CHOICE",
@@ -1232,8 +1204,12 @@
           "value": "$"
         },
         {
-          "type": "SYMBOL",
-          "name": "_advanced_identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_advanced_identifier"
+          }
         }
       ]
     },
@@ -1245,8 +1221,12 @@
           "value": "$"
         },
         {
-          "type": "SYMBOL",
-          "name": "_advanced_identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_advanced_identifier"
+          }
         },
         {
           "type": "SYMBOL",
@@ -1265,8 +1245,12 @@
               "value": "%"
             },
             {
-              "type": "SYMBOL",
-              "name": "_advanced_identifier"
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_advanced_identifier"
+              }
             }
           ]
         },
@@ -1278,8 +1262,12 @@
               "value": ".%"
             },
             {
-              "type": "SYMBOL",
-              "name": "_advanced_identifier"
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_advanced_identifier"
+              }
             }
           ]
         }
@@ -1293,8 +1281,12 @@
           "value": "^"
         },
         {
-          "type": "SYMBOL",
-          "name": "_advanced_identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_advanced_identifier"
+          }
         }
       ]
     },
@@ -1596,32 +1588,37 @@
           "name": "identifier"
         },
         {
-          "type": "TOKEN",
+          "type": "ALIAS",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "if"
-              },
-              {
-                "type": "STRING",
-                "value": "else"
-              },
-              {
-                "type": "STRING",
-                "value": "while"
-              },
-              {
-                "type": "STRING",
-                "value": "return"
-              },
-              {
-                "type": "STRING",
-                "value": "calc"
-              }
-            ]
-          }
+            "type": "TOKEN",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "if"
+                },
+                {
+                  "type": "STRING",
+                  "value": "else"
+                },
+                {
+                  "type": "STRING",
+                  "value": "while"
+                },
+                {
+                  "type": "STRING",
+                  "value": "return"
+                },
+                {
+                  "type": "STRING",
+                  "value": "calc"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "identifier"
         }
       ]
     }
