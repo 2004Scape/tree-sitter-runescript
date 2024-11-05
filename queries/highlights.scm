@@ -22,15 +22,17 @@
   callee: (identifier) @function)
 
 ; Literals
-((literal) @constant.builtin
-  (#any-of? @constant.builtin "true" "false" "null"))
+((literal) @boolean
+  (#any-of? @boolean "true" "false"))
 
-[
-  (integer_literal)
-  (coord_literal)
-] @number
+(literal
+  "null" @constant.builtin)
 
-(comment) @comment
+(integer_literal) @number
+
+(coord_literal) @string.special
+
+(comment) @comment @spell
 
 (string_fragment) @string
 
@@ -80,13 +82,19 @@
   "%" @operator)
 
 [
+  (def_type_keyword)
+  (switch_type_keyword)
+] @keyword.modifier
+
+"return" @keyword.return
+
+"while" @keyword.repeat
+
+[
   "default"
   "if"
   "else"
-  "while"
-  "calc"
-  "return"
   "case"
-  (def_type_keyword)
-  (switch_type_keyword)
-] @keyword
+] @keyword.conditional
+
+"calc" @keyword
